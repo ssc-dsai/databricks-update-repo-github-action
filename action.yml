@@ -1,0 +1,37 @@
+name: Databricks run job
+description: Runs a Databricks job
+
+inputs:
+  databricks-host:
+    description: Databricks host url
+    required: true
+  databricks-repo-branch:
+    description: Databricks repository branch
+    required: true
+  databricks-repo-id:
+    description: Databricks repository ID
+    required: true
+  databricks-token:
+    description: Databricks token
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    # Install Python
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    
+    # Install databricks CLI
+    - name: install-databricks-cli
+      uses: microsoft/install-databricks-cli@v1.0.0
+      
+    # Run Databricks notebook
+    - run: ${{ github.action_path }}/update_repo.sh
+      shell: bash
+      env:
+        DATABRICKS_HOST: ${{ inputs.databricks-host }}
+        DATABRICKS_AAD_TOKEN: ${{ inputs.databricks-token }}
+        DATABRICKS_REPO_ID: ${{ inputs.databricks-repo-id}}
+        DATABRICKS_REPO_BRANCH: ${{ inputs.databricks-repo-branch}}
