@@ -26,9 +26,11 @@ databricks configure --host $DATABRICKS_HOST --aad-token
 
 ID=$(databricks repos update --repo-id $(($DATABRICKS_REPO_ID)) --branch $(($DATABRICKS_REPO_BRANCH)) | jq -r '. | {id}')
 
-if [[ -z $ID ]]; then
-    echo "Could not update repository"
-    exit 1
-fi
+echo $ID
 
-echo Update Sent, Repo ID: $ID
+# if [[ -z $ID ]]; then
+#     echo "Could not update repository"
+#     exit 1
+# fi
+
+# echo Update Sent, Repo ID: $ID
