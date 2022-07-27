@@ -21,6 +21,7 @@ jobs:
     - name: Update Databricks repo
       uses: ssc-dsai/databricks-update-repo-github-action@main
       with:
+        # Databricks Host (should begin with https://)
         databricks-host: ${{ secrets.DATABRICKS_HOST }}
         databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
         databricks-repo-id: ${{ secrets.DATABRICKS_REPO_ID }}

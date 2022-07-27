@@ -27,7 +27,7 @@ runs:
     - name: install-databricks-cli
       uses: microsoft/install-databricks-cli@v1.0.0
       
-    # Run Databricks notebook
+    # Update Databricks repository
     - run: ${{ github.action_path }}/update_repo.sh
       shell: bash
       env:

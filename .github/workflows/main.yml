@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Update Databricks repo
+      - name: Update Databricks repository
         uses: ssc-dsai/databricks-update-repo-github-action@main
         with:
           databricks-host: ${{ secrets.DATABRICKS_HOST }}
