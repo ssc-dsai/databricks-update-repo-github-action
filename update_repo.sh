@@ -24,7 +24,7 @@ fi
 
 databricks configure --host $DATABRICKS_HOST --aad-token
 
-ID=$(databricks repos update --repo-id $(($DATABRICKS_REPO_ID)) --branch $(($DATABRICKS_REPO_BRANCH)) | jq '.id'))
+ID=$(databricks repos update --repo-id $(($DATABRICKS_REPO_ID)) --branch $(($DATABRICKS_REPO_BRANCH)) | jq '.id')
 
 echo $ID
 
