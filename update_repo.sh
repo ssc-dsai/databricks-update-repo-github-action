@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash	
 
 echo Running Databricks repo update
 
-if [-z $DATABRICKS_HOST]; then
+if [[ -z $DATABRICKS_HOST ]]; then
     echo "Missing Databricks Host"
     exit 1
 fi
 
-if [-z $DATABRICKS_TOKEN]; then
+if [[ -z $DATABRICKS_TOKEN ]]; then
     echo "Missing Databricks Token"
     exit 1
 fi
 
-if [-z $DATABRICKS_REPO_ID] ; then
+if [[ -z $DATABRICKS_REPO_ID ]] ; then
   echo "Missing Databricks Repository ID"
   exit 1
 fi
 
-if [-z $DATABRICKS_REPO_BRANCH] ; then
+if [[ -z $DATABRICKS_REPO_BRANCH ]] ; then
   echo "Missing Databricks Repository Branch"
   exit 1
 fi
@@ -26,7 +26,7 @@ databricks configure --host $DATABRICKS_HOST --aad-token
 
 ID=$(databricks repos update --repo-id $(($DATABRICKS_REPO_ID)) --branch $(($DATABRICKS_REPO_BRANCH)) | jq -r '. | {id}')
 
-if [-z $ID]; then
+if [[ -z $ID ]]; then
     echo "Could not update repository"
     exit 1
 fi
