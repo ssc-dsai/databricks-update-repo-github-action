@@ -7,7 +7,7 @@ if [[ -z $DATABRICKS_HOST ]]; then
     exit 1
 fi
 
-if [[ -z $DATABRICKS_TOKEN ]]; then
+if [[ -z $DATABRICKS_AAD_TOKEN ]]; then
     echo "Missing Databricks Token"
     exit 1
 fi
