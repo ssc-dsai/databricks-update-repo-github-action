@@ -24,11 +24,6 @@ if [[ -z $DATABRICKS_REPO_BRANCH ]] ; then
 fi
 
 databricks configure --host $DATABRICKS_HOST --aad-token
-ID=$(databricks repos update --repo-id $(($DATABRICKS_REPO_ID)) --branch $(($DATABRICKS_REPO_BRANCH))| jq '.id')
-
-if [[ -z $ID ]]; then
-    echo "Could not update repository"
-    exit 1
-fi
+databricks repos update --repo-id $DATABRICKS_REPO_ID --branch $DATABRICKS_REPO_BRANCH
 
 echo Update Sent
